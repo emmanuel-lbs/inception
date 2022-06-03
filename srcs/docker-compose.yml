@@ -1,0 +1,60 @@
+
+service:
+    mariadb:
+        image: mariadb
+        container_name: mariadb
+        restart: always
+        build: requirements/mariadb/.
+        networks:
+            - manu_network
+        volumes:
+            - db_data:/var/lib/mysql
+
+
+    wordpress:
+        depend_on: mariadb
+        image: wordpress
+        container_name: wordpress
+        restart: always
+        build: requirements/wordpress/.
+        networks:
+            - manu_network
+        volumes:
+            - wordpress_data:/var/www/html/
+
+    nginx:
+        depend_on: wordpress
+        image: nginx
+        container_name: nginx
+        restart: always
+        ports: 
+            - 443:443
+        build: requirements/nginx/.
+        networks:
+            - manu_network
+        volumes:
+            - wordpress_data:/var/www/html/
+
+
+volumes:
+    wordpress_data:
+        name: wordpress_data
+        driver: local
+        driver_opts:
+            device: #/home/elabasqu/data/wp
+            o: bind
+            type: none
+    db_data:
+        name: db_data
+        driver: local
+        driver_opts:
+            device: #/home/elabasqu/data/wp
+            o: bind
+            type: none
+
+
+ networks:
+     manu_network:
+         name: manu_network
+     
+
