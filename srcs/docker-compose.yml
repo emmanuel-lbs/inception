@@ -1,14 +1,21 @@
+version: '3'
 
 service:
     mariadb:
         image: mariadb
         container_name: mariadb
         restart: always
-        build: requirements/mariadb/.
+        build:
+            context: ./requirements/mariadb/./././././././././././.
+            args:
+                ROOT_PWD: ${DB_ROOT_PWD}
+                USER: ${DB_USER}
+                USER_PWD: ${DB_USER_PWD}
+        build: requirements/mariadb/././././././././././././.
         networks:
             - manu_network
         volumes:
-            - db_data:/var/lib/mysql
+            - db_data:/var/lib/mysql/././././././././././././.
 
 
     wordpress:
@@ -16,11 +23,12 @@ service:
         image: wordpress
         container_name: wordpress
         restart: always
-        build: requirements/wordpress/.
+        build: requirements/wordpress/././././././././././././.
+        env_file: .env 
         networks:
             - manu_network
         volumes:
-            - wordpress_data:/var/www/html/
+            - wordpress_data:/var/www/html//./././././././././././.
 
     nginx:
         depend_on: wordpress
@@ -29,7 +37,7 @@ service:
         restart: always
         ports: 
             - 443:443
-        build: requirements/nginx/.
+        build: requirements/nginx/././././././././././././.
         networks:
             - manu_network
         volumes:
