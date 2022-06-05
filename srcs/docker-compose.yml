@@ -8,15 +8,14 @@ service:
         build:
             context: ./requirements/mariadb/./././././././././././.
             args:
-                ROOT_PWD: ${DB_ROOT_PWD}
-                USER: ${DB_USER}
-                USER_PWD: ${DB_USER_PWD}
+                ROOT_PWD: ${MYSQL_ROOT_PASSWORD}
+                USER: ${MYSQL_USER}
+                USER_PWD: ${MYSQL_PASSWORD}
         build: requirements/mariadb/././././././././././././.
         networks:
             - manu_network
         volumes:
             - db_data:/var/lib/mysql/././././././././././././.
-
 
     wordpress:
         depend_on: mariadb
