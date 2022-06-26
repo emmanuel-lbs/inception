@@ -20,4 +20,6 @@ RUN service php7.3-fpm start &&\
 
 COPY conf/wp_launcher.sh ./wp_launcher.sh
 
+RUN chmod +x wp_launcher.sh
+
 CMD sh wp_launcher.sh

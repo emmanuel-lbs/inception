@@ -1,10 +1,8 @@
-
 FROM debian:buster
 
-RUN     apt-get update \
-                && apt-get upgrade -y
-
-RUN apt-get -y install mariadb-client mariadb-server
+RUN     apt-get update -y \
+	&& apt-get upgrade -y \
+	&& apt-get -y install mariadb-client mariadb-server
 
 ARG  ROOT_PWD
 ARG  USER

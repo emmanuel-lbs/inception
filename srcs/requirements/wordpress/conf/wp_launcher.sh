@@ -8,7 +8,7 @@ if [ ! -f "wp-config.php" ]; then
 		--dbhost=$WP_DB_HOST \
 		--skip-check --allow-root
 
-	wp core install --title="LE TITRE" \
+	wp core install --title="MANUUUUUL" \
 		--url=$WP_URL \
 		--admin_user=$WP_ADMIN \
 		--admin_password=$WP_ADMIN_PASSWORD \
