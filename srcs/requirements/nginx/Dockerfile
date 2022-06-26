@@ -11,6 +11,4 @@ RUN mkdir -p /etc/nginx/ssl \
                 -subj "/C=FR/ST=Rhone/L=Lyon/O=42/CN=elabasqu.42.fr/emailAddress=elabasqu@student.42lyon.fr" \
                 -keyout /etc/nginx/ssl/elabasqu.42.fr.key -out /etc/nginx/ssl/elabasqu.42.fr.crt
 
-EXPOSE 443
-
 CMD ["nginx","-g", "daemon off;"]
